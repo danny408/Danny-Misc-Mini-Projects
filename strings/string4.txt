@@ -1,0 +1,8 @@
+4. Explain how windows handles unicode. Understand the different unicode formats.
+
+Windows uses UTF-16 for its stuff and makes everything 16 bit wide to handle stuff?
+
+L"string"
+
+
+use MultiByteToWideChar / WideCharToMultiByte

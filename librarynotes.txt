@@ -1,0 +1,4 @@
+#!/bin/bash
+gcc -Wall -c *.c
+ar -cvq libdanny.a *o.
+ar -t libdanny.a

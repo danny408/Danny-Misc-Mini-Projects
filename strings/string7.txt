@@ -1,0 +1,4 @@
+//7. How can you protect your program from invalid strings? We're namely looking for preventing segfaults.
+
+Sanitize all strings before processing (same way to prevent SQL injections?)
+Make sure all special strings are handled correctly using? (never pass a raw string into ur functions, always sanitize it first)

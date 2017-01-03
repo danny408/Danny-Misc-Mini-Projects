@@ -1,0 +1,22 @@
+2. What is path MTU? How is it discovered? How does this affect your code for TCP and UDP?
+
+
+Path MTU discovery(max transmission unit) to find max size on network path to prevent ip fragmentation
+
+ip frag is when your max size is like 10kb per unit and u have a 100kb file so it has to break it up to send thru 
+and then reassembled by the host
+
+
+
+in TCP: ip frag can cause TCP to resend ALL fragments if you los one
+otherwise UDP?? probably dont care
+
+
+sets Dont Fragment flag in IP header of packets
+any device along path whose MTU is smaller will drop it and send it back ICMP "frag needed and its MTU", 
+then source host reduces its path MTU
+
+tldr;
+Sets the Dont fragment flag on ip headers;
+so as a packet goes down the path if it encounters soemhing that cant take that big of a MTU
+it sends a msg back to the host with its max size and gets resized to that

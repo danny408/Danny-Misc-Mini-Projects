@@ -1,0 +1,10 @@
+1. Difference between TCP and UDP.
+
+TCP:
+uses 3 way handshake, enforces data integrity, slower
+connection based, rearranges packets
+
+UDP:
+connectionless
+sends continuous data, doesnt enforce data integrity,faster
+each packets independent

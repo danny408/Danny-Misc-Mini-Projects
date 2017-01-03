@@ -1,0 +1,38 @@
+//3. Be able to answer questions on how unicode works. You'll have to write some unicode functions.
+
+/* How Unicode Works
+	Used to have a common protocol to decode different types of text to the same key? 
+	ex: "Hola" in spanish and "Hello" in english are the same in binary unicode?
+	Unicode is just extended ascii to fit the rest of the worlds char in 2bytes
+	
+	UTF-16 issues
+	Issues: Byte order big endian/little endian/little
+	Solution: Header? special text?
+	
+	Issues: NULL in the high order byte for ascii chars..
+	
+	UTF-8 Notes:
+	still uses BOM as header
+	has some surrogate code points
+	8 bit code units
+	variable length
+	using 1-6 8 bit bytes
+	uses first 1-7 bits to show what variable length is
+	
+	
+	UTF-8 issues:
+	some protocols dont allow for non ascii values,
+	some dont handle the high bit
+	
+	UTF-7: uses 7 bits, store ascii as ascii, above ascii in binary base64?
+	ascii chars between + and - are considered base64
+	
+
+*/
+
+#include <stdio.h>
+
+int main(void){
+	printf("This is all about unicode!\n");
+	return 0;
+}

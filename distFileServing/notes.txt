@@ -1,0 +1,111 @@
+11
+[7:03:33 PM] (Channel) a: get_file -> access the datase of files and find which client has the file, links to client
+[7:03:55 PM] (Channel) a: get_file will return server_ip:port/file
+[7:04:12 PM] (Channel) a: https://sniperdad.com/static/pleb.jpg
+[7:11:43 PM] (Channel) a: you can get this here!
+[7:11:48 PM] (Channel) a: @here -> get this file
+[7:14:52 PM] (Channel) a: https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html
+[7:15:45 PM] (Channel) a: get the file here! hash is this!
+[7:22:25 PM] (Channel) a: https://upload.wikimedia.org/wikipedia/commons/c/c6/Http_request_telnet_ubuntu.png
+[7:23:18 PM] a is now unmuted.
+[7:23:57 PM] (Channel) a: \r\n\r\n
+
+ openssl s_client -connect sniperdad.com:443
+
+
+12:02 AM - zoi: you need to save it somewhere
+12:02 AM - zoi: what servers the file is stored on
+12:02 AM - @nevinyrral #dreams: UR ONLY SYNCING
+12:02 AM - @nevinyrral #dreams: ON INSERT
+12:02 AM - zoi: and what files are stored
+12:02 AM - @nevinyrral #dreams: why do u need to save
+12:02 AM - @nevinyrral #dreams: u just parse where u wanna store it and pass it alolng to all conencted
+12:03 AM - zoi: because i want to know where they are without asking all clients
+12:03 AM - zoi: i also want to know if theres files that are unavailable because clients arent connected
+12:03 AM - zoi: i also want to be able to load the list back in on restart
+12:16 AM - @nevinyrral #dreams: why do u need the list back
+12:16 AM - @nevinyrral #dreams: if ur only syncing stuff u insert
+12:16 AM - zoi: so i know what files i have
+12:16 AM - zoi: when i start the program
+12:16 AM - @nevinyrral #dreams: but why do u need those
+12:16 AM - @nevinyrral #dreams: the main goal is here
+12:16 AM - @nevinyrral #dreams: on insert
+12:16 AM - @nevinyrral #dreams: u send that file
+12:16 AM - @nevinyrral #dreams: to every single connected  client
+12:16 AM - zoi: wrong
+12:17 AM - zoi: on one client minimum
+12:17 AM - zoi: up to however many parity copies you want
+12:17 AM - zoi: it doesnt go to every client
+12:17 AM - @nevinyrral #dreams: ?
+12:17 AM - @nevinyrral #dreams: thats what u said
+12:17 AM - @nevinyrral #dreams: initially
+12:17 AM - @nevinyrral #dreams: u need to fucking organize ur requirements then
+12:17 AM - @nevinyrral #dreams: [7:02:19 PM] (Channel) a: insert file into main server
+[7:02:30 PM] (Channel) a: file is distributed among connected clients
+12:17 AM - zoi: distributed
+12:17 AM - zoi: doesnt mean
+12:17 AM - zoi: copied to every single one
+12:18 AM - @nevinyrral #dreams: ?
+12:18 AM - @nevinyrral #dreams: r u calling
+12:18 AM - @nevinyrral #dreams: ur file servers
+12:18 AM - zoi: [20:03:35] To weaboo pit of despair: get_file -> access the datase of files and find which client has the file, links to client
+12:18 AM - zoi: do you see the next line
+12:18 AM - zoi: right below it
+12:18 AM - zoi: where i identify all these questions youre asking me
+12:20 AM - zoi: i can explain why the design is the way it is
+12:20 AM - zoi: because im not sure i did that
+12:20 AM - zoi: might help in the future
+12:20 AM - zoi: i just want whats basically a pool of storage
+12:20 AM - zoi: main server directs that for you
+12:21 AM - @nevinyrral #dreams: so ur just doing
+12:21 AM - @nevinyrral #dreams: a laod balancer
+12:21 AM - zoi: you can add a new server to the pool at any time
+12:21 AM - @nevinyrral #dreams: but for files
+12:21 AM - zoi: a storage balancer maybe
+12:21 AM - zoi: my application doesnt have huge network load or cpu load
+12:21 AM - @nevinyrral #dreams: i thought we just have
+12:21 AM - @nevinyrral #dreams: "clients"
+12:21 AM - zoi: its just long term storage
+12:21 AM - zoi: theres two types of clients here
+12:21 AM - zoi: the main server has two client interfaces
+12:22 AM - zoi: one for the people requestiong "where do i get this file?"
+12:22 AM - zoi: and the other interface is for "store this file please"
+12:22 AM - @nevinyrral #dreams: alright
+12:22 AM - @nevinyrral #dreams: well that changes alot
+12:22 AM - zoi: now theres another type of "server" software youre writing
+12:22 AM - zoi: we can call the first one the coordinator or main server
+12:23 AM - zoi: the next one basically accepts files from the main server and reports its stats back
+12:23 AM - zoi: storage remaining among other things
+12:23 AM - zoi: the other role of this server is to accept http requests
+12:23 AM - zoi: and deliver files
+
+
+
+a: /static/pleb.jpg
+[9:23:59 PM] (Channel) a: HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 29 Sep 2016 04:23:39 GMT
+Content-Type: image/jpeg
+Content-Length: 15590
+Last-Modified: Thu, 31 Dec 2015 06:16:02 GMT
+Connection: keep-alive
+ETag: "5684c822-3ce6"
+Strict-Transport-Security: max-age=31536000; includeSubdomains
+Accept-Ranges: bytes
+
+
+[9:24:04 PM] To weaboo pit of despair: GET /static/pleb.jpg
+[9:24:11 PM] (Channel) a: GET /static/pleb.jpg HTTP/1.1
+Host: sniperdad.com
+
+
+[9:26:31 PM] (Channel) a: jpg => jpeg
+[9:26:37 PM] (Channel) a: image/jpeg
+[9:28:21 PM] (Channel) a: where can someone find this file?
+[9:28:30 PM] (Channel) a: char *where_to_get_thefile(whatever fulename)
+[9:28:34 PM] To weaboo pit of despair: http://pastebin.com/uRfc6X5Y
+[9:28:46 PM] (Channel) a: 489.234.234.12:29309/abcdef.jpg
+[9:28:57 PM] (Channel) a: connectionFD = accept(sockfd, (struct sockaddr*) NULL, NULL);//blocks until a client connects
+[9:29:21 PM] (Channel) a: connectionFD = accept(sockfd, (struct sockaddr*) NULL, NULL);//blocks until a client connects
+[9:31:15 PM] a is now muted and deafened.
+[9:31:17 PM] Muted and deafened.

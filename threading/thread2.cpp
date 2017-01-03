@@ -1,0 +1,1 @@
+//2. Add a resource lock for an exclusive resource that's shared between all threads.
