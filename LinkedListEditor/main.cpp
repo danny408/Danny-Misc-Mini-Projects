@@ -377,8 +377,5 @@ int main(int argc, char **argv)
         }
         cout << "Current Line: " << edit.currentLine << endl;
     }
-      return 0;
-
-
     return 0;
 }
