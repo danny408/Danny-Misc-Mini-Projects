@@ -252,6 +252,7 @@ class TextEdit{
                 }
                 else{ // go to line n
                     currentLine = atoi(token);
+                    return true;
                 }
             }
             else if(strncmp(token,"L",1) == 0){
