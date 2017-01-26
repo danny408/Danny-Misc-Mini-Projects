@@ -1,5 +1,3 @@
-//could move files
-
 #include <iostream>
 #include <string.h>
 #include <cstdlib>
@@ -145,6 +143,7 @@ class TextEdit{
                     delete singleDel;
                 }
                 totalLines--;
+                currentLine--;
             }
             else{ // del n to m inclusive
                 LinkedList *delPtr[m-n+1];
@@ -168,6 +167,7 @@ class TextEdit{
                     delete delPtr[k];
                 }
                 totalLines -= m - n + 1;
+                currentLine -= m - n + 1;
             }
         }
 
@@ -209,7 +209,7 @@ class TextEdit{
                     return true;
                 }
                 else{ //go to line then insert
-                    insert(token2, stoi(token1));
+                    insert(token2, atoi(token1));
                     return true;
                 }
             }
@@ -251,7 +251,7 @@ class TextEdit{
                     return true;
                 }
                 else{ // go to line n
-                    currentLine = stoi(token);
+                    currentLine = atoi(token);
                 }
             }
             else if(strncmp(token,"L",1) == 0){
@@ -284,7 +284,7 @@ class TextEdit{
                 token = strtok(NULL," ");
                 //prompt for line
 
-                if (token != NULL && stoi(token) > totalLines){
+                if (token != NULL && atoi(token) > totalLines){
                     return false;
                 }
                 char buffer[MAX];
@@ -300,7 +300,7 @@ class TextEdit{
                 }
 
                 else{
-                    replace(buffer,stoi(token));
+                    replace(buffer,atoi(token));
                     //replace  line n with this
                     //call v with line n
                     return true;
@@ -375,7 +375,10 @@ int main(int argc, char **argv)
             cout << "Invalid command try again!\n";
             continue;
         }
-        cout << "Current Line: " << edit.currentLine << endl;
+        if(!quit){
+            cout << "Current Line: " << edit.currentLine << endl;
+        }
     }
+
     return 0;
 }
