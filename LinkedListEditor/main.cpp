@@ -89,7 +89,6 @@ class TextEdit{
                     next = next->next;
                 }
 
-                cout << "need to add: " << line - totalLines << endl;
                 for(int i = 0; i < line - totalLines - 1; ++i){
                     LinkedList *newnode = new LinkedList;
                     cur->next = newnode;
@@ -111,7 +110,7 @@ class TextEdit{
         }
 
         void replace(char *text, int line){
-            cout << "Replacing line: "<< line << " with: " << text << endl;
+            //cout << "Replacing line: "<< line << " with: " << text << endl;
             LinkedList *cur = head->next;
             for(int i = 1; i < line; i++){
                 cur = cur->next;
@@ -172,7 +171,6 @@ class TextEdit{
         }
 
         void printLine(int n, int m){
-            cout << "afdssdf: " << n << ":" << m << endl;
             LinkedList *cur = head->next;
             for (int i = 1; i < n; ++i){
                 cur = cur->next;
@@ -181,7 +179,6 @@ class TextEdit{
                 cout << cur->data;
             }
             else{
-                cout << "fdskfsdkfs\n";
                 for(int i = n; i < m; ++i){
                     if(strncmp(cur->data,"",MAX) == 0){
                         cout << n << ":" << cur->data << endl;
